@@ -6,7 +6,7 @@
 //     const data = await res.json();
 //     displaySongs(data.data);
 // }
-
+const lyricsDiv = document.getElementById('song-lyrics');
 const searchSongs = () => {
     const searchText = document.getElementById('search-field').value;
     const url = `https://api.lyrics.ovh/suggest/${searchText}`
@@ -15,6 +15,7 @@ const searchSongs = () => {
         .then(res => res.json())
         .then(data => displaySongs(data.data))
         .catch(error => displayError('Something Went Wrong!! Please try again later!'));
+    lyricsDiv.innerText = '';
 }
 
 
@@ -60,7 +61,7 @@ const getLyric = async (artist, title) => {
 // }
 
 const displayLyrics = lyrics => {
-    const lyricsDiv = document.getElementById('song-lyrics');
+
     lyricsDiv.innerText = lyrics;
 }
 
